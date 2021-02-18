@@ -75,4 +75,6 @@ if __name__ == "__main__":
     m=int(input('m: '))
     n=int(input('n: '))
     mazeGenerator = MazeGenerator(m, n)
-    mazeGenerator.GetMaze().Print()
+    maze = mazeGenerator.GetMaze()
+    maze.Print()
+    print(maze.ToList())
