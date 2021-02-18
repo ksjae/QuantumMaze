@@ -5,7 +5,7 @@
 # Import tools
 from pygame.locals import *
 import pygame
-import qmaze
+from Maze import Maze
  
 class Player:
     x = 1
@@ -25,11 +25,11 @@ class Player:
         self.y += self.speed
 
 # Initialization code
-windowWidth = 800
-windowHeight = 600
+windowWidth = 640
+windowHeight = 480
 
 player = Player()
-maze = qmaze.Maze()
+maze = Maze(10,8).ToList()
 
 pygame.init()
 display_surf = pygame.display.set_mode((windowWidth,windowHeight), pygame.HWSURFACE)
@@ -52,9 +52,9 @@ block_surf = pygame.image.load("block.bmp").convert()
 
 def render():
     display_surf.fill((0,0,0))
-    for row in range(len(maze.maze)):
-        for column in range(len(maze.maze[row])):
-            if maze.maze[row][column] == 1:
+    for row in range(len(maze)):
+        for column in range(len(maze[row])):
+            if maze[row][column] == 1:
                 x = column * TILE_SIZE
                 y = row * TILE_SIZE
                 display_surf.blit(block_surf, (x, y))
@@ -70,19 +70,19 @@ while(running):
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w:
                 player.moveUp()
-                if maze.maze[player.y][player.x] == 1:
+                if maze[player.y][player.x] == 1:
                     player.moveDown()
             elif event.key == pygame.K_a:
                 player.moveLeft()
-                if maze.maze[player.y][player.x] == 1:
+                if maze[player.y][player.x] == 1:
                     player.moveRight()
             elif event.key == pygame.K_s:
                 player.moveDown()
-                if maze.maze[player.y][player.x] == 1:
+                if maze[player.y][player.x] == 1:
                     player.moveUp()
             elif event.key == pygame.K_d:
                 player.moveRight()
-                if maze.maze[player.y][player.x] == 1:
+                if maze[player.y][player.x] == 1:
                     player.moveLeft()
 
     pygame.time.wait(13)
