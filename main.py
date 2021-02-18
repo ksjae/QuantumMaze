@@ -28,21 +28,16 @@ class Player:
 windowWidth = 800
 windowHeight = 600
 
-running = False
-display_surf = None
-image_surf = None
-block_surf = None
 player = Player()
 maze = qmaze.Maze()
 
-def init():
-    pygame.init()
-    display_surf = pygame.display.set_mode((windowWidth,windowHeight), pygame.HWSURFACE)
-    
-    pygame.display.set_caption('Pygame pythonspot.com example')
-    running = True
-    image_surf = pygame.image.load("player.png").convert()
-    block_surf = pygame.image.load("block.png").convert()
+pygame.init()
+display_surf = pygame.display.set_mode((windowWidth,windowHeight), pygame.HWSURFACE)
+
+pygame.display.set_caption('Pygame pythonspot.com example')
+running = True
+image_surf = pygame.image.load("player.bmp").convert()
+block_surf = pygame.image.load("block.bmp").convert()
 
 
 
@@ -63,9 +58,6 @@ def render():
 
 def cleanup():
     pygame.quit()
-
-
-init()
 
 while(running):
     pygame.event.pump()
