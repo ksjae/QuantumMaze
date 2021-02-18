@@ -86,6 +86,4 @@ while(running):
                     player.moveLeft()
 
     pygame.time.wait(13)
-    on_loop()
     render()
-cleanup()
