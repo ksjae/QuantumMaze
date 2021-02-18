@@ -4,6 +4,7 @@
 
 # Import tools
 import turtle
+import qmaze
 
 # Initialize GUI Window
 tScreen = turtle.Screen()
@@ -32,6 +33,13 @@ def endGame():
 tScreen.listen()
 tScreen.onkeypress(moveTurtleFoward, 'Right') 
 tScreen.onkeypress(endGame, 'Escape') 
+
+
+'''
+Gameplay
+'''
+maze = qmaze.Maze()
+
 
 # When game is done
 tScreen.mainloop()
