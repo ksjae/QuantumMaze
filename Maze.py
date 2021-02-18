@@ -59,4 +59,5 @@ class Maze(object):
                 else:
                     maze_list[y][2*x+1] = 1
             maze_list[y][2*self.m_W]
+        print(maze_list)
         return maze_list

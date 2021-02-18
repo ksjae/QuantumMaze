@@ -6,6 +6,7 @@
 from pygame.locals import *
 import pygame
 from Maze import Maze
+import MazeGenerator
  
 class Player:
     x = 1
@@ -31,7 +32,9 @@ windowHeight = 480
 player = Player()
 SIZE = (10, 8)
 SIZE_MINUS_ONE = (SIZE[0]-1, SIZE[1]-1)
-maze = Maze(*SIZE).ToList()
+mazeGenerator = MazeGenerator.MazeGenerator(*SIZE)
+maze = mazeGenerator.GetMaze()
+maze = maze.ToList()
 
 pygame.init()
 display_surf = pygame.display.set_mode((windowWidth,windowHeight), pygame.HWSURFACE)
@@ -41,7 +44,7 @@ running = True
 image_surf = pygame.image.load("player.bmp").convert()
 block_surf = pygame.image.load("block.bmp").convert()
 
-TILE_SIZE = 64
+TILE_SIZE = 32
 
 pygame.init()
 display_surf = pygame.display.set_mode((windowWidth,windowHeight), pygame.HWSURFACE)
