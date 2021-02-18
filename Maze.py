@@ -1,5 +1,3 @@
-import json
-
 class Maze(object):
     def __init__(self, w, h):
         self.m_W = w
