@@ -46,18 +46,21 @@ class Maze(object):
 
     def ToList(self):
         maze_list = [[0 for i in range(2*self.m_W+1)] for j in range(2*self.m_H+1)]
-        for x in range(2*self.m_W+1):
-            maze_list[0][x]
         for y in range(self.m_H):
             for x in range(self.m_W):
                 if(x != 0 and self.HasPath(self.GetVertex(x, y), self.GetVertex(x - 1, y))):
-                    maze_list[y][2*x] = 0
+                    maze_list[2*y+1][2*x] = 0
                 else:
-                    maze_list[y][2*x] = 1
+                    maze_list[2*y+1][2*x] = 1
+                    maze_list[2*y+2][2*x] = 1
                 if(self.HasPath(self.GetVertex(x, y), self.GetVertex(x, y + 1))):
-                    maze_list[y][2*x+1] = 0
+                    maze_list[2*y+1][2*x+1] = 0
                 else:
-                    maze_list[y][2*x+1] = 1
-            maze_list[y][2*self.m_W]
-        print(maze_list)
+                    maze_list[2*y+1][2*x+1] = 0
+                    maze_list[2*y+2][2*x+1] = 1
+            maze_list[2*y+1][2*self.m_W] = 1
+            maze_list[2*y+2][2*self.m_W] = 1
+        for x in range(2*self.m_W+1):
+            maze_list[0][x] = 1
+            maze_list[self.m_H*2][x] = 1
         return maze_list

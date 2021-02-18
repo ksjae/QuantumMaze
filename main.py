@@ -26,14 +26,15 @@ class Player:
         self.y += self.speed
 
 # Initialization code
-windowWidth = 640
-windowHeight = 480
+windowWidth = 1280
+windowHeight = 720
 
 player = Player()
-SIZE = (10, 8)
-SIZE_MINUS_ONE = (SIZE[0]-1, SIZE[1]-1)
+SIZE = (19, 11)
+FINISH_LINE = (SIZE[0]*2-1, SIZE[1]*2-1)
 mazeGenerator = MazeGenerator.MazeGenerator(*SIZE)
 maze = mazeGenerator.GetMaze()
+maze.Print()
 maze = maze.ToList()
 
 pygame.init()
@@ -72,25 +73,25 @@ while(running):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:  # Usually wise to be able to close your program.
             running = False
+            print(player.x, player.y)
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_w or event.key == pygame.K_UP:
                 player.moveUp()
-                if maze[player.y][player.x] == 1:
+                if maze[player.y][player.x] == 1 or player.y < 0:
                     player.moveDown()
             elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.moveLeft()
-                if maze[player.y][player.x] == 1:
+                if maze[player.y][player.x] == 1 or player.x < 0:
                     player.moveRight()
             elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
                 player.moveDown()
-                if maze[player.y][player.x] == 1:
+                if maze[player.y][player.x] == 1 or player.y > SIZE[1]*2:
                     player.moveUp()
             elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
                 player.moveRight()
-                if maze[player.y][player.x] == 1:
+                if maze[player.y][player.x] == 1 or player.x > SIZE[0]*2:
                     player.moveLeft()
-
-        if (player.x, player.y) == SIZE_MINUS_ONE:
+        if (player.x, player.y) == FINISH_LINE:
             print("SUCCESS!!!!!!!!!")
             running = False
             break
