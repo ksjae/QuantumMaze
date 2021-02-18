@@ -3,7 +3,8 @@
 '''
 
 # Import tools
-import turtle
+from pygame.locals import *
+import pygame
 import qmaze
  
 class Player:
@@ -40,16 +41,14 @@ block_surf = pygame.image.load("block.bmp").convert()
 
 TILE_SIZE = 64
 
-# Warp turtle back to home when maze draw is done
-t.home()
+pygame.init()
+display_surf = pygame.display.set_mode((windowWidth,windowHeight), pygame.HWSURFACE)
 
-# Predefined turtle motion function
-def moveTurtleFoward():
-    t.forward(50)
+pygame.display.set_caption('Pygame pythonspot.com example')
+running = True
+image_surf = pygame.image.load("player.bmp").convert()
+block_surf = pygame.image.load("block.bmp").convert()
 
-def endGame():
-    print("Click to exit")
-    tScreen.exitonclick()
 
 def render():
     display_surf.fill((0,0,0))
@@ -62,10 +61,7 @@ def render():
     display_surf.blit(image_surf,(player.x * TILE_SIZE,player.y * TILE_SIZE))
     pygame.display.flip()
 
-# Call func when key pressed
-tScreen.listen()
-tScreen.onkeypress(moveTurtleFoward, 'Right') 
-tScreen.onkeypress(endGame, 'Escape') 
+# Game run code
 
 while(running):
     for event in pygame.event.get():
