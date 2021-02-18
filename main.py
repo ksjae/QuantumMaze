@@ -29,7 +29,9 @@ windowWidth = 640
 windowHeight = 480
 
 player = Player()
-maze = Maze(10,8).ToList()
+SIZE = (10, 8)
+SIZE_MINUS_ONE = (SIZE[0]-1, SIZE[1]-1)
+maze = Maze(*SIZE).ToList()
 
 pygame.init()
 display_surf = pygame.display.set_mode((windowWidth,windowHeight), pygame.HWSURFACE)
@@ -68,22 +70,27 @@ while(running):
         if event.type == pygame.QUIT:  # Usually wise to be able to close your program.
             running = False
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_w:
+            if event.key == pygame.K_w or event.key == pygame.K_UP:
                 player.moveUp()
                 if maze[player.y][player.x] == 1:
                     player.moveDown()
-            elif event.key == pygame.K_a:
+            elif event.key == pygame.K_a or event.key == pygame.K_LEFT:
                 player.moveLeft()
                 if maze[player.y][player.x] == 1:
                     player.moveRight()
-            elif event.key == pygame.K_s:
+            elif event.key == pygame.K_s or event.key == pygame.K_DOWN:
                 player.moveDown()
                 if maze[player.y][player.x] == 1:
                     player.moveUp()
-            elif event.key == pygame.K_d:
+            elif event.key == pygame.K_d or event.key == pygame.K_RIGHT:
                 player.moveRight()
                 if maze[player.y][player.x] == 1:
                     player.moveLeft()
+
+        if (player.x, player.y) == SIZE_MINUS_ONE:
+            print("SUCCESS!!!!!!!!!")
+            running = False
+            break
 
     pygame.time.wait(13)
     render()

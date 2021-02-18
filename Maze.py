@@ -47,16 +47,3 @@ class Maze(object):
     def ToList(self):
         maze_list = [[0 for i in range(2*self.m_W+1)] for j in range(2*self.m_H+1)]
         return maze_list
-
-    def ToJSON(self):
-        return json.dumps({
-            'Width': self.m_W,
-            'Height': self.m_H,
-            'Graph': self.m_Maze
-            })
-
-    def FromJSON(self, jsonString):
-        data = json.loads(jsonString)
-        self.m_W = data['Width']
-        self.m_H = data['Height']
-        self.m_Maze = data['Graph']
