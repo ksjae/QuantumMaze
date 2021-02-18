@@ -44,7 +44,7 @@ TILE_SIZE = 64
 pygame.init()
 display_surf = pygame.display.set_mode((windowWidth,windowHeight), pygame.HWSURFACE)
 
-pygame.display.set_caption('Pygame pythonspot.com example')
+pygame.display.set_caption('QuMa: Quantum Maze')
 running = True
 image_surf = pygame.image.load("player.bmp").convert()
 block_surf = pygame.image.load("block.bmp").convert()
