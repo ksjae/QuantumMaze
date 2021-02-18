@@ -1,4 +1,5 @@
 from Maze import Maze
+from Qrandom import qrandom
 
 class MazeGenerator(object):
     def __init__(self, w, h):
