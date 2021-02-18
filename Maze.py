@@ -27,7 +27,6 @@ class Maze(object):
 
     def Print(self):
         str = ''
-#        MazeList = [[0 for i in range(2*m+1)] for j in range(2*n+1)]
         for x in range(self.m_W):
             str += ' __'#' __' -> 11
         print(str)
@@ -44,6 +43,10 @@ class Maze(object):
                     str += '__'#'__'
             print(str + '|')#'|'
         print('')
+
+    def ToList(self):
+        maze_list = [[0 for i in range(2*self.m_W+1)] for j in range(2*self.m_H+1)]
+        return maze_list
 
     def ToJSON(self):
         return json.dumps({
