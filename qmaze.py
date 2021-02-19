@@ -38,6 +38,7 @@ class Maze:
             location = location[0]+path[0], location[1]+path[1]
             if (location[0]+1, location[1]) in after_esc_path or (location[0]-1, location[1]) in after_esc_path or (location[0], location[1]+1) in after_esc_path or (location[0], location[1]-1) in after_esc_path:
                 # 벽 구현 방법은 알아서 고민하세용
+                #이거 표현형이 벽이 아니라 점을 구현하는거라 1. 점을 기둥으로 생각하기(좌표 저장) 2.표현형 바꾸기(종만이한테 설명했었음)를  
                 walls_meet.append(location)
 
         # 6. 리스트에서 하나의 벽을 꺼내서 얽힘 벽과 양자얽힘 상태를 만든다.
