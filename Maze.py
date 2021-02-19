@@ -1,3 +1,4 @@
+import random
 class Maze(object):
     def __init__(self, w, h):
         self.m_W = w
@@ -53,7 +54,8 @@ class Maze(object):
                     maze_list[2*y+1][2*x] = 1
                     maze_list[2*y+2][2*x] = 1 # '|' sign
                 if(self.HasPath(self.GetVertex(x, y), self.GetVertex(x, y + 1))):
-                    maze_list[2*y+1][2*x+1] = 0
+                    if (random.random() > 0.8):
+                        maze_list[2*y+1][2*x+1] = random.randint(2,5)
                 else:
                     maze_list[2*y+1][2*x+1] = 0
                     maze_list[2*y+2][2*x+1] = 1 # '_' sign

@@ -7,6 +7,7 @@ from pygame.locals import *
 import pygame
 from Maze import Maze
 import MazeGenerator
+import random
  
 class Player:
     x = 1
@@ -55,10 +56,10 @@ running = True
 image_surf = pygame.image.load("player.bmp").convert()
 block_surf = pygame.image.load("block.bmp").convert()
 finish_surf = pygame.image.load("wall.bmp").convert()
-x_surf = pygame.image.load("wall.bmp").convert()
-z_surf = pygame.image.load("wall.bmp").convert()
-s_surf = pygame.image.load("wall.bmp").convert()
-h_surf = pygame.image.load("wall.bmp").convert()
+x_surf = pygame.image.load("x.bmp").convert()
+z_surf = pygame.image.load("z.bmp").convert()
+s_surf = pygame.image.load("s.bmp").convert()
+h_surf = pygame.image.load("h.bmp").convert()
 
 tiles = [block_surf, x_surf, z_surf, s_surf, h_surf]
 
