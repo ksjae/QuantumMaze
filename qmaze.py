@@ -28,7 +28,7 @@ class Maze:
         currentEscapePath = self.get_solution()
         # 2. 탈출 경로 중간에 벽을 만들어 경로를 끊는다(이하 얽힘 벽)
         index = random.randint(1, len(currentEscapePath))
-        # 3. 기존 탈출 경로를 1, 얽힘 벽 이후 탈출 경로를 2로 저장한다.
+        # 3. 기존 탈출 경로와 얽힘 벽 이후 탈출 경로를 저장한다.
         prev_esc_path = currentEscapePath[:index]
         after_esc_path = currentEscapePath[index:]
         # 5. 벽을 사이에 두고 1과 2가 만나는 벽을 리스트에 추가한다.
