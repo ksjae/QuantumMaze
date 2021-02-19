@@ -54,16 +54,24 @@ pygame.display.set_caption('QuMa: Quantum Maze')
 running = True
 image_surf = pygame.image.load("player.bmp").convert()
 block_surf = pygame.image.load("block.bmp").convert()
+finish_surf = pygame.image.load("wall.bmp").convert()
+x_surf = pygame.image.load("wall.bmp").convert()
+z_surf = pygame.image.load("wall.bmp").convert()
+s_surf = pygame.image.load("wall.bmp").convert()
+h_surf = pygame.image.load("wall.bmp").convert()
 
+tiles = [block_surf, x_surf, z_surf, s_surf, h_surf]
 
 def render():
     display_surf.fill((0,0,0))
     for row in range(len(maze)):
         for column in range(len(maze[row])):
-            if maze[row][column] == 1:
+            r = maze[row][column]
+            if maze[row][column] != 0:
                 x = column * TILE_SIZE
                 y = row * TILE_SIZE
-                display_surf.blit(block_surf, (x, y))
+                display_surf.blit(tiles[r-1], (x, y))
+    display_surf.blit(finish_surf, (FINISH_LINE[0]* TILE_SIZE, FINISH_LINE[1]* TILE_SIZE))
     display_surf.blit(image_surf,(player.x * TILE_SIZE,player.y * TILE_SIZE))
     pygame.display.flip()
 
