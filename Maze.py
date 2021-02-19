@@ -45,6 +45,7 @@ class Maze(object):
 
     def ToList(self):
         maze_list = [[0 for i in range(2*self.m_W+1)] for j in range(2*self.m_H+1)]
+        count = 4
         for y in range(self.m_H):
             for x in range(self.m_W):
                 if(x != 0 and self.HasPath(self.GetVertex(x, y), self.GetVertex(x - 1, y))):
@@ -54,8 +55,9 @@ class Maze(object):
                     maze_list[2*y+1][2*x] = 1
                     maze_list[2*y+2][2*x] = 1 # '|' sign
                 if(self.HasPath(self.GetVertex(x, y), self.GetVertex(x, y + 1))):
-                    if (random.random() > 0.8):
-                        maze_list[2*y+1][2*x+1] = random.randint(2,5)
+                    if (random.random() > 0.8 and count > 0):
+                        maze_list[2*y+1][2*x+1] = count+1
+                        count -= 1
                 else:
                     maze_list[2*y+1][2*x+1] = 0
                     maze_list[2*y+2][2*x+1] = 1 # '_' sign
